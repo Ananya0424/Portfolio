@@ -119,7 +119,7 @@ export default function Projects() {
                       rel="noreferrer"
                       className="flex-1 text-center bg-purple-600 text-white py-1.5 rounded-lg font-bold text-xs hover:bg-purple-500 transition-colors"
                     >
-                      Demo
+                      Live Site
                     </a>
                   )}
                   {project.github && (
