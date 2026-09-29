@@ -2,8 +2,8 @@ import React from 'react';
 
 export default function Contact() {
   return (
-    <section id="contact" className="min-h-screen w-full flex items-center pl-8 md:pl-20 py-20 snap-start">
-      <div className="max-w-4xl">
+    <section id="contact" className="min-h-[80vh] w-full flex items-center px-8 md:px-20 py-20 snap-start">
+      <div className="max-w-4xl mx-auto w-full">
         <h2 className="text-4xl md:text-5xl font-bold mb-8 uppercase tracking-wide">
           Let's Work Together
         </h2>

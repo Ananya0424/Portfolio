@@ -8,9 +8,9 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <div className="flex min-h-screen bg-[#8C6200] text-white overflow-hidden font-sans">
+    <div className="flex flex-col min-h-screen bg-[#111111] text-white overflow-x-hidden font-sans">
       <Navbar />
-      <main className="flex-1 ml-16 md:ml-20 overflow-y-auto h-screen snap-y snap-mandatory scroll-smooth">
+      <main className="flex-1 w-full mt-20">
         <Hero />
         <Info />
         <Skills />

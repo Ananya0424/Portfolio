@@ -61,8 +61,8 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="min-h-screen w-full flex items-center pl-8 pr-8 md:pl-20 md:pr-16 py-20 snap-start">
-      <div className="max-w-6xl w-full">
+    <section id="projects" className="min-h-screen w-full flex items-center px-8 md:px-20 py-20 snap-start">
+      <div className="max-w-6xl w-full mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold mb-12 uppercase tracking-wide">
           My Projects
         </h2>

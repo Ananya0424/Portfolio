@@ -28,7 +28,7 @@ export default function Skills() {
   const [activeTab, setActiveTab] = useState('ALL');
 
   return (
-    <section id="skills" className="min-h-screen w-full flex items-center pl-8 pr-8 md:pl-20 md:pr-16 py-20 snap-start bg-[#1a1a1a] text-white">
+    <section id="skills" className="min-h-[80vh] w-full flex items-center px-8 md:px-20 py-20 snap-start text-white">
       <div className="max-w-5xl w-full mx-auto flex flex-col items-center">
         
         {/* Tabs */}
