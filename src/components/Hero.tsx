@@ -64,25 +64,37 @@ export default function Hero() {
           </h1>
         </div>
 
-        {/* Tagline */}
+        {/* Tagline with Word Hover Effect */}
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-gray-400 mb-4 md:mb-6 tracking-tight leading-tight"
+          className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-gray-400 mb-4 md:mb-6 tracking-tight leading-tight flex flex-wrap gap-x-3 gap-y-2"
         >
-          I design & build intelligent applications.
+          {["I", "design", "&", "build", "intelligent", "applications."].map((word, i) => (
+            <span key={i} className="inline-block transition-all duration-300 hover:scale-125 hover:text-white hover:drop-shadow-[0_0_15px_rgba(255,255,255,0.8)] hover:-translate-y-2 cursor-default">
+              {word}
+            </span>
+          ))}
         </motion.h2>
         
-        {/* Bio */}
-        <motion.p 
+        {/* Bio with Word Hover Effect */}
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-sm md:text-lg text-gray-400 mb-6 md:mb-8 max-w-2xl leading-relaxed"
+          className="text-sm md:text-lg text-gray-400 mb-6 md:mb-8 max-w-2xl leading-relaxed flex flex-wrap gap-x-1.5"
         >
-          I'm a software developer specializing in <span className="text-white font-medium">Full-Stack Development</span> and <span className="text-white font-medium">Generative AI</span>. I love creating beautiful, scalable, and user-centric digital experiences.
-        </motion.p>
+          {"I'm a software developer specializing in ".split(' ').map((word, i) => (
+            <span key={`a-${i}`} className="inline-block transition-all duration-300 hover:scale-[1.3] hover:text-white hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] hover:-translate-y-1 cursor-default">{word}</span>
+          ))}
+          <span className="inline-block transition-all duration-300 hover:scale-[1.2] hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] text-white font-medium cursor-default">Full-Stack Development</span>
+          <span className="inline-block transition-all duration-300 hover:scale-[1.3] hover:text-white hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] hover:-translate-y-1 cursor-default">and</span>
+          <span className="inline-block transition-all duration-300 hover:scale-[1.2] hover:-translate-y-1 hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] text-white font-medium cursor-default">Generative AI.</span>
+          {"I love creating beautiful, scalable, and user-centric digital experiences.".split(' ').map((word, i) => (
+            <span key={`b-${i}`} className="inline-block transition-all duration-300 hover:scale-[1.3] hover:text-white hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] hover:-translate-y-1 cursor-default">{word}</span>
+          ))}
+        </motion.div>
         
         {/* Buttons */}
         <motion.div 
