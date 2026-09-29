@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const orbits = [
   {
-    radius: 140, // Inner orbit
+    radius: 100, // Inner orbit
     duration: 25,
     skills: [
       { name: 'React.js', color: 'text-cyan-400', border: 'border-cyan-400/50' },
@@ -13,7 +13,7 @@ const orbits = [
     ]
   },
   {
-    radius: 240, // Middle orbit
+    radius: 180, // Middle orbit
     duration: 35,
     reverse: true,
     skills: [
@@ -25,7 +25,7 @@ const orbits = [
     ]
   },
   {
-    radius: 340, // Outer orbit
+    radius: 260, // Outer orbit
     duration: 45,
     skills: [
       { name: 'LangChain', color: 'text-blue-300', border: 'border-blue-300/50' },
@@ -40,22 +40,22 @@ const orbits = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="min-h-screen w-full flex flex-col items-center justify-center px-8 md:px-20 py-20 relative z-10 overflow-hidden">
+    <section id="skills" className="min-h-screen w-full flex flex-col items-center justify-center px-4 md:px-20 py-20 relative z-10 overflow-hidden">
       
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-16 md:mb-24 z-20"
+        className="text-center mb-8 md:mb-12 z-20"
       >
         <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-4">
-          My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Tech Universe</span>
+          My <span className="text-purple-400">Tech Universe</span>
         </h2>
         <p className="text-gray-400">Everything I use to build intelligent applications.</p>
       </motion.div>
 
       {/* Orbit System Container */}
-      <div className="relative w-full max-w-[800px] h-[700px] flex items-center justify-center transform scale-50 sm:scale-75 md:scale-100">
+      <div className="relative w-full max-w-[600px] aspect-square flex items-center justify-center transform scale-75 md:scale-100">
         
         {/* Core Center */}
         <div className="absolute z-20 flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 shadow-[0_0_50px_rgba(168,85,247,0.6)] border border-white/20">
