@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const projects = [
   {
@@ -59,56 +60,123 @@ const projects = [
   }
 ];
 
+// Reusable Tilt Card Component
+function TiltCard({ project, index }: { project: any, index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  const handleMouseLeave = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: "preserve-3d",
+      }}
+      className="relative flex flex-col h-full bg-[#111] p-6 rounded-3xl border border-gray-800 hover:border-purple-500/50 group transition-colors shadow-2xl"
+    >
+      <div 
+        style={{ transform: "translateZ(50px)" }} 
+        className="flex flex-col h-full relative z-10 pointer-events-none"
+      >
+        <h3 className="text-2xl font-bold mb-1 text-white group-hover:text-purple-400 transition-colors">{project.title}</h3>
+        <p className="text-purple-500 font-semibold mb-4 text-xs uppercase tracking-[0.1em]">{project.role}</p>
+        
+        <p className="text-gray-400 mb-6 flex-1 text-sm leading-relaxed">
+          {project.desc}
+        </p>
+        
+        <div className="flex flex-wrap gap-2 mb-8">
+          {project.tech.map((tech: string, i: number) => (
+            <span key={i} className="bg-white/5 border border-white/10 text-gray-300 px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div 
+        style={{ transform: "translateZ(60px)" }} 
+        className="flex items-center gap-4 pt-4 border-t border-gray-800 w-full mt-auto relative z-20"
+      >
+        {project.live && (
+          <a 
+            href={project.live} 
+            target="_blank" 
+            rel="noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 text-sm font-bold bg-gradient-to-r from-purple-600 to-blue-600 text-white py-3 px-4 rounded-xl hover:shadow-[0_0_15px_rgba(168,85,247,0.5)] transition-all"
+          >
+            Live Demo
+          </a>
+        )}
+        
+        {project.github && (
+          <a 
+            href={project.github} 
+            target="_blank" 
+            rel="noreferrer"
+            className="flex-1 flex items-center justify-center gap-2 text-sm font-bold bg-white/10 text-white py-3 px-4 rounded-xl hover:bg-white/20 transition-all border border-white/10"
+          >
+            GitHub
+          </a>
+        )}
+      </div>
+
+      {/* Hover Gradient Glow behind card */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl -z-10 pointer-events-none" />
+    </motion.div>
+  );
+}
+
 export default function Projects() {
   return (
-    <section id="projects" className="min-h-screen w-full flex items-center px-8 md:px-20 py-20 snap-start">
+    <section id="projects" className="min-h-screen w-full flex items-center px-8 md:px-20 py-20 snap-start text-white relative z-10">
       <div className="max-w-6xl w-full mx-auto">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12 uppercase tracking-wide">
-          My Projects
-        </h2>
+        <motion.h2 
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-display font-bold mb-16 tracking-tight bg-gradient-to-r from-white to-gray-500 bg-clip-text text-transparent"
+        >
+          Selected Works
+        </motion.h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" style={{ perspective: "1000px" }}>
           {projects.map((project, index) => (
-            <div key={index} className="bg-white text-black p-6 rounded-3xl shadow-lg hover:shadow-2xl transition-shadow group flex flex-col h-full border-b-4 border-transparent hover:border-[#FDBB2D]">
-              <h3 className="text-xl font-bold mb-2 group-hover:text-orange-500 transition-colors line-clamp-2">{project.title}</h3>
-              <p className="text-orange-500 font-semibold mb-3 text-xs uppercase tracking-wider">{project.role}</p>
-              
-              <p className="text-gray-600 mb-6 flex-1 text-sm leading-relaxed">
-                {project.desc}
-              </p>
-              
-              <div className="flex flex-wrap gap-2 mb-6">
-                {project.tech.map((tech, i) => (
-                  <span key={i} className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              
-              <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-                {project.live && (
-                  <a 
-                    href={project.live} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 text-sm font-bold bg-[#FDBB2D] text-white py-2 px-4 rounded-xl hover:bg-orange-500 transition-colors"
-                  >
-                    Live Demo
-                  </a>
-                )}
-                
-                {project.github && (
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 text-sm font-bold bg-black text-white py-2 px-4 rounded-xl hover:bg-gray-800 transition-colors"
-                  >
-                    GitHub
-                  </a>
-                )}
-              </div>
-            </div>
+            <TiltCard key={index} project={project} index={index} />
           ))}
         </div>
       </div>
