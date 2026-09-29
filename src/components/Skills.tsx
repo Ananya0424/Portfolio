@@ -1,106 +1,126 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const skillsData = {
-  ALL: [
-    'HTML5', 'CSS3', 'JavaScript (ES6+)', 'React.js', 'Next.js', 'TypeScript',
-    'Tailwind CSS', 'Bootstrap', 'Node.js', 'Express.js', 'Python',
-    'RESTful APIs', 'JWT Authentication', 'MongoDB', 'PostgreSQL', 'SQL',
-    'LangChain', 'FAISS', 'Ollama', 'Gemini API'
-  ],
-  FRONTEND: [
-    'HTML5', 'CSS3', 'JavaScript (ES6+)', 'React.js', 'Next.js', 'TypeScript',
-    'Tailwind CSS', 'Bootstrap'
-  ],
-  BACKEND: [
-    'Node.js', 'Express.js', 'Python', 'RESTful APIs', 'JWT Authentication'
-  ],
-  DATABASE: [
-    'MongoDB', 'PostgreSQL', 'SQL', 'FAISS'
-  ],
-  'AI & TOOLS': [
-    'LangChain', 'Ollama', 'Gemini API', 'Git', 'GitHub'
-  ]
-};
-
-const categories = Object.keys(skillsData);
+const orbits = [
+  {
+    radius: 140, // Inner orbit
+    duration: 25,
+    skills: [
+      { name: 'React.js', color: 'text-cyan-400', border: 'border-cyan-400/50' },
+      { name: 'Next.js', color: 'text-white', border: 'border-white/50' },
+      { name: 'Tailwind', color: 'text-teal-400', border: 'border-teal-400/50' },
+      { name: 'Node.js', color: 'text-green-500', border: 'border-green-500/50' },
+    ]
+  },
+  {
+    radius: 240, // Middle orbit
+    duration: 35,
+    reverse: true,
+    skills: [
+      { name: 'Python', color: 'text-yellow-400', border: 'border-yellow-400/50' },
+      { name: 'MongoDB', color: 'text-green-400', border: 'border-green-400/50' },
+      { name: 'PostgreSQL', color: 'text-blue-400', border: 'border-blue-400/50' },
+      { name: 'Express.js', color: 'text-gray-300', border: 'border-gray-500/50' },
+      { name: 'TypeScript', color: 'text-blue-500', border: 'border-blue-500/50' },
+    ]
+  },
+  {
+    radius: 340, // Outer orbit
+    duration: 45,
+    skills: [
+      { name: 'LangChain', color: 'text-blue-300', border: 'border-blue-300/50' },
+      { name: 'Ollama', color: 'text-gray-100', border: 'border-gray-300/50' },
+      { name: 'Gemini API', color: 'text-purple-400', border: 'border-purple-400/50' },
+      { name: 'Git & GitHub', color: 'text-orange-400', border: 'border-orange-400/50' },
+      { name: 'JavaScript', color: 'text-yellow-300', border: 'border-yellow-300/50' },
+      { name: 'FAISS', color: 'text-indigo-400', border: 'border-indigo-400/50' },
+    ]
+  }
+];
 
 export default function Skills() {
-  const [activeTab, setActiveTab] = useState('ALL');
-
   return (
-    <section id="skills" className="min-h-[80vh] w-full flex items-center px-8 md:px-20 py-20 snap-start text-white overflow-hidden relative">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-20 right-20 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-20 left-20 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl -z-10"></div>
+    <section id="skills" className="min-h-screen w-full flex flex-col items-center justify-center px-8 md:px-20 py-20 relative z-10 overflow-hidden">
+      
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="text-center mb-16 md:mb-24 z-20"
+      >
+        <h2 className="text-4xl md:text-5xl font-display font-bold text-white tracking-tight mb-4">
+          My <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Tech Universe</span>
+        </h2>
+        <p className="text-gray-400">Everything I use to build intelligent applications.</p>
+      </motion.div>
 
-      <div className="max-w-5xl w-full mx-auto flex flex-col items-center z-10">
+      {/* Orbit System Container */}
+      <div className="relative w-full max-w-[800px] h-[700px] flex items-center justify-center transform scale-50 sm:scale-75 md:scale-100">
         
-        <motion.h2 
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-12 uppercase tracking-wide bg-gradient-to-r from-purple-400 to-blue-500 bg-clip-text text-transparent"
-        >
-          My Arsenal
-        </motion.h2>
-
-        {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-4 mb-16 w-full max-w-4xl relative">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className={`relative px-6 py-2 md:px-8 md:py-3 rounded-full text-sm font-bold tracking-wider transition-all duration-300 ${
-                activeTab === cat 
-                  ? 'text-white' 
-                  : 'text-gray-400 hover:text-white hover:bg-white/5'
-              }`}
-            >
-              {activeTab === cat && (
-                <motion.div
-                  layoutId="activeTab"
-                  className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full -z-10"
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                />
-              )}
-              {cat}
-            </button>
-          ))}
+        {/* Core Center */}
+        <div className="absolute z-20 flex items-center justify-center w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 shadow-[0_0_50px_rgba(168,85,247,0.6)] border border-white/20">
+          <span className="text-3xl md:text-4xl font-black text-white tracking-tighter">AI</span>
         </div>
 
-        {/* Skills Pills */}
-        <motion.div layout className="flex flex-wrap justify-center gap-4 md:gap-6 max-w-4xl min-h-[300px] items-center content-center">
-          <AnimatePresence mode="popLayout">
-            {skillsData[activeTab as keyof typeof skillsData].map((skill, index) => (
+        {/* Orbits */}
+        {orbits.map((orbit, orbitIndex) => {
+          const rotationDirection = orbit.reverse ? -360 : 360;
+          return (
+            <div 
+              key={orbitIndex}
+              className="absolute rounded-full border border-white/10"
+              style={{
+                width: orbit.radius * 2,
+                height: orbit.radius * 2,
+              }}
+            >
               <motion.div
-                key={skill}
-                layout
-                initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
-                transition={{ 
-                  duration: 0.4, 
-                  delay: index * 0.03,
-                  type: "spring",
-                  stiffness: 200
+                className="w-full h-full relative"
+                animate={{ rotate: rotationDirection }}
+                transition={{
+                  duration: orbit.duration,
+                  ease: "linear",
+                  repeat: Infinity,
                 }}
-                whileHover={{ 
-                  scale: 1.1, 
-                  y: -5,
-                  boxShadow: "0 10px 25px -5px rgba(168, 85, 247, 0.5)"
-                }}
-                className="bg-[#1a1a1a] border border-gray-800 text-gray-200 px-6 py-3 md:px-8 md:py-4 rounded-2xl text-sm md:text-base font-semibold cursor-pointer flex items-center justify-center relative group overflow-hidden"
               >
-                {/* Glow effect on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <span className="relative z-10">{skill}</span>
+                {orbit.skills.map((skill, skillIndex) => {
+                  const angle = (360 / orbit.skills.length) * skillIndex;
+                  // Convert angle to radians for positioning
+                  const radian = (angle * Math.PI) / 180;
+                  const x = Math.cos(radian) * orbit.radius;
+                  const y = Math.sin(radian) * orbit.radius;
+
+                  return (
+                    <div
+                      key={skillIndex}
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                      style={{
+                        transform: `translate(${x}px, ${y}px)`,
+                      }}
+                    >
+                      {/* Counter-rotate so text stays upright */}
+                      <motion.div
+                        animate={{ rotate: -rotationDirection }}
+                        transition={{
+                          duration: orbit.duration,
+                          ease: "linear",
+                          repeat: Infinity,
+                        }}
+                        className={`px-4 py-2 bg-[#0a0a0c] backdrop-blur-md rounded-full border ${skill.border} shadow-lg flex items-center justify-center hover:scale-110 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all cursor-default group`}
+                      >
+                        <span className={`text-sm font-bold whitespace-nowrap ${skill.color}`}>
+                          {skill.name}
+                        </span>
+                      </motion.div>
+                    </div>
+                  );
+                })}
               </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+            </div>
+          );
+        })}
       </div>
+      
     </section>
   );
 }
