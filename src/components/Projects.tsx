@@ -60,17 +60,18 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="min-h-screen w-full flex flex-col justify-center px-4 md:px-12 py-16 relative z-10 overflow-hidden">
+    <section id="projects" className="h-screen w-full flex flex-col justify-center px-4 md:px-12 relative z-10 overflow-hidden">
       
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-center mb-8"
+        className="text-center mb-6 pt-16"
       >
         <h2 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight">
           Projects
         </h2>
+        <p className="text-gray-400 mt-2 text-sm">Hover over a card to flip and view details.</p>
       </motion.div>
 
       {/* Grid Container */}
@@ -82,46 +83,58 @@ export default function Projects() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
-            className="group flex flex-col bg-[#0f0f11] rounded-2xl border border-white/10 overflow-hidden hover:border-purple-500/50 transition-all shadow-lg relative"
+            className="group relative w-full h-[180px] md:h-[200px] [perspective:1000px] cursor-pointer"
           >
-            {/* Subtle Top Border Gradient instead of the big box */}
-            <div className={`w-full h-2 bg-gradient-to-r ${project.color} opacity-70`} />
-            
-            <div className="p-5 md:p-6 flex flex-col h-full">
-              <h3 className="text-lg font-bold text-white mb-1 line-clamp-1">
-                {project.title}
-              </h3>
-              <p className="text-[10px] font-bold tracking-wider uppercase text-purple-400 mb-2">
-                {project.role}
-              </p>
+            {/* Inner Container for Flip Effect */}
+            <div className="w-full h-full relative [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)] transition-transform duration-700 ease-in-out shadow-lg">
               
-              <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-4 line-clamp-2 flex-1">
-                {project.desc}
-              </p>
-
-              {/* Links / Buttons */}
-              <div className="flex gap-2 mt-auto">
-                {project.live && (
-                  <a 
-                    href={project.live} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex-1 text-center bg-white text-black py-2 rounded-lg font-bold text-xs hover:bg-gray-200 transition-colors"
-                  >
-                    Live Demo
-                  </a>
-                )}
-                {project.github && (
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="flex-1 text-center bg-white/5 text-white py-2 rounded-lg font-bold text-xs hover:bg-white/10 transition-colors border border-white/10"
-                  >
-                    GitHub
-                  </a>
-                )}
+              {/* Front of Card */}
+              <div className="absolute inset-0 w-full h-full bg-[#0f0f11] rounded-2xl border border-white/10 [backface-visibility:hidden] flex flex-col items-center justify-center p-6 text-center overflow-hidden">
+                <div className={`absolute top-0 w-full h-1.5 bg-gradient-to-r ${project.color} opacity-80`} />
+                <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
+                <p className="text-sm font-bold tracking-widest uppercase text-purple-400">{project.role}</p>
               </div>
+
+              {/* Back of Card (Flipped) */}
+              <div className="absolute inset-0 w-full h-full bg-[#1a1a1f] rounded-2xl border border-purple-500/30 [backface-visibility:hidden] [transform:rotateY(180deg)] flex flex-col p-5">
+                <p className="text-gray-300 text-xs md:text-sm leading-relaxed mb-3 flex-1">
+                  {project.desc}
+                </p>
+                
+                {/* Tech Chips */}
+                <div className="flex flex-wrap gap-1.5 mb-3">
+                  {project.tech.map((tech, i) => (
+                    <span key={i} className="bg-white/5 border border-white/10 text-gray-300 px-2 py-1 rounded text-[10px] font-medium">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Buttons */}
+                <div className="flex gap-2 mt-auto">
+                  {project.live && (
+                    <a 
+                      href={project.live} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="flex-1 text-center bg-purple-600 text-white py-1.5 rounded-lg font-bold text-xs hover:bg-purple-500 transition-colors"
+                    >
+                      Demo
+                    </a>
+                  )}
+                  {project.github && (
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className="flex-1 text-center bg-white/10 text-white py-1.5 rounded-lg font-bold text-xs hover:bg-white/20 transition-colors border border-white/10"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </div>
+
             </div>
           </motion.div>
         ))}
