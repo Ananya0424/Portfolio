@@ -3,34 +3,43 @@ import { motion } from 'framer-motion';
 
 const orbits = [
   {
-    radius: 70, // Inner orbit
+    radius: 90, // Inner orbit (Frontend)
     duration: 25,
     skills: [
       { name: 'React.js', color: 'text-cyan-400', border: 'border-cyan-400/50' },
       { name: 'Next.js', color: 'text-white', border: 'border-white/50' },
-      { name: 'Node.js', color: 'text-green-500', border: 'border-green-500/50' },
+      { name: 'Tailwind', color: 'text-teal-400', border: 'border-teal-400/50' },
+      { name: 'HTML5', color: 'text-orange-500', border: 'border-orange-500/50' },
+      { name: 'CSS3', color: 'text-blue-500', border: 'border-blue-500/50' },
     ]
   },
   {
-    radius: 120, // Middle orbit
+    radius: 150, // Middle orbit (Backend & DB)
     duration: 35,
     reverse: true,
     skills: [
+      { name: 'Node.js', color: 'text-green-500', border: 'border-green-500/50' },
+      { name: 'Express', color: 'text-gray-300', border: 'border-gray-500/50' },
       { name: 'Python', color: 'text-yellow-400', border: 'border-yellow-400/50' },
+      { name: 'Flask', color: 'text-gray-400', border: 'border-gray-400/50' },
       { name: 'MongoDB', color: 'text-green-400', border: 'border-green-400/50' },
       { name: 'PostgreSQL', color: 'text-blue-400', border: 'border-blue-400/50' },
-      { name: 'Express', color: 'text-gray-300', border: 'border-gray-500/50' },
+      { name: 'SQL', color: 'text-blue-300', border: 'border-blue-300/50' },
     ]
   },
   {
-    radius: 180, // Outer orbit
+    radius: 220, // Outer orbit (AI, Tools & Others)
     duration: 45,
     skills: [
       { name: 'LangChain', color: 'text-blue-300', border: 'border-blue-300/50' },
       { name: 'Ollama', color: 'text-gray-100', border: 'border-gray-300/50' },
       { name: 'Gemini', color: 'text-purple-400', border: 'border-purple-400/50' },
-      { name: 'Git', color: 'text-orange-400', border: 'border-orange-400/50' },
       { name: 'FAISS', color: 'text-indigo-400', border: 'border-indigo-400/50' },
+      { name: 'TypeScript', color: 'text-blue-500', border: 'border-blue-500/50' },
+      { name: 'JavaScript', color: 'text-yellow-300', border: 'border-yellow-300/50' },
+      { name: 'Git/GitHub', color: 'text-orange-400', border: 'border-orange-400/50' },
+      { name: 'REST APIs', color: 'text-gray-200', border: 'border-gray-200/50' },
+      { name: 'JWT', color: 'text-pink-400', border: 'border-pink-400/50' },
     ]
   }
 ];
@@ -68,10 +77,10 @@ export default function Info() {
         </div>
 
         {/* Right: Orbit System */}
-        <div className="relative w-full h-[350px] md:h-[450px] flex items-center justify-center scale-90 md:scale-100">
+        <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center scale-75 md:scale-100">
           {/* Core Center */}
           <div className="absolute z-20 flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-purple-600 to-blue-600 shadow-[0_0_30px_rgba(168,85,247,0.6)] border border-white/20">
-            <span className="text-xl md:text-2xl font-black text-white tracking-tighter">AI</span>
+            <span className="text-sm md:text-base font-black text-white tracking-widest uppercase">Skills</span>
           </div>
 
           {/* Orbits */}
