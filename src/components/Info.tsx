@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const orbits = [
   {
-    radius: 90, // Inner orbit (Frontend)
+    radius: 95, // Inner orbit (Frontend)
     duration: 25,
     skills: [
       { name: 'React.js', color: 'text-cyan-400', border: 'border-cyan-400/50' },
@@ -14,7 +14,7 @@ const orbits = [
     ]
   },
   {
-    radius: 150, // Middle orbit (Backend & DB)
+    radius: 160, // Middle orbit (Backend & DB)
     duration: 35,
     reverse: true,
     skills: [
@@ -28,7 +28,7 @@ const orbits = [
     ]
   },
   {
-    radius: 220, // Outer orbit (AI, Tools & Others)
+    radius: 235, // Outer orbit (AI, Tools & Others)
     duration: 45,
     skills: [
       { name: 'LangChain', color: 'text-blue-300', border: 'border-blue-300/50' },
@@ -89,7 +89,7 @@ export default function Info() {
             return (
               <div 
                 key={orbitIndex}
-                className="absolute rounded-full border border-white/10"
+                className="absolute rounded-full border border-white/25 border-dashed shadow-[0_0_15px_rgba(168,85,247,0.1)]"
                 style={{
                   width: orbit.radius * 2,
                   height: orbit.radius * 2,
