@@ -1,18 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Navbar() {
-  const [isDark, setIsDark] = useState(true);
+  const [activeSection, setActiveSection] = useState('home');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const scrollPosition = window.scrollY + 200; // Offset for navbar
+
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const top = element.offsetTop;
+          const height = element.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveSection(section);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', id: 'home', href: '#home' },
+    { name: 'About', id: 'about', href: '#about' },
+    { name: 'Skills', id: 'skills', href: '#skills' },
+    { name: 'Projects', id: 'projects', href: '#projects' },
+    { name: 'Contact', id: 'contact', href: '#contact' },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-20 bg-[#1a1a1a]/90 backdrop-blur-md flex justify-between items-center px-8 md:px-20 z-50 shadow-md">
+    <nav className="fixed top-0 left-0 w-full h-20 bg-[#1a1a1a]/90 backdrop-blur-md flex justify-between items-center px-8 md:px-20 z-50 shadow-md transition-all">
       {/* Logo */}
       <div className="w-10 h-10 md:w-12 md:h-12 bg-purple-600 rounded flex items-center justify-center font-bold text-white text-xl">
         A
@@ -24,14 +45,16 @@ export default function Navbar() {
           <a
             key={item.name}
             href={item.href}
-            className="text-white font-semibold text-sm md:text-base tracking-widest hover:text-purple-400 transition-colors"
+            className={`font-semibold text-sm md:text-base tracking-widest transition-colors ${
+              activeSection === item.id ? 'text-purple-400' : 'text-white hover:text-purple-300'
+            }`}
           >
             {item.name}
           </a>
         ))}
       </div>
 
-      {/* Mobile Menu Icon (Placeholder for simplicity) */}
+      {/* Mobile Menu Icon */}
       <div className="md:hidden flex items-center">
         <button className="text-white">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-8 h-8">
