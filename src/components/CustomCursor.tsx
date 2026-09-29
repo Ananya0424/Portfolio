@@ -12,8 +12,7 @@ export default function CustomCursor() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      const scalableTags = ['a', 'button', 'p', 'h1', 'h2', 'h3', 'span'];
-      if (scalableTags.includes(target.tagName.toLowerCase()) || target.closest('a') || target.closest('button')) {
+      if (target.tagName.toLowerCase() === 'a' || target.tagName.toLowerCase() === 'button' || target.closest('a') || target.closest('button')) {
         setIsHovering(true);
       } else {
         setIsHovering(false);
@@ -41,10 +40,10 @@ export default function CustomCursor() {
       
       {/* Core Custom Cursor */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-purple-400 pointer-events-none z-[999] mix-blend-screen hidden md:block shadow-[0_0_15px_rgba(168,85,247,1)]"
+        className="fixed top-0 left-0 w-6 h-6 rounded-full border-2 border-purple-400 pointer-events-none z-[999] mix-blend-screen hidden md:block shadow-[0_0_15px_rgba(168,85,247,1)]"
         animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
+          x: mousePosition.x - 12,
+          y: mousePosition.y - 12,
           scale: isHovering ? 2.5 : 1,
           backgroundColor: isHovering ? 'rgba(255, 255, 255, 0.2)' : 'transparent',
           borderColor: isHovering ? 'rgba(255, 255, 255, 0.8)' : 'rgba(168, 85, 247, 0.8)',
