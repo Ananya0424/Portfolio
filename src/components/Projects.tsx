@@ -5,35 +5,17 @@ const projects = [
   {
     title: 'PrepPilot AI',
     role: 'AI Interview Platform',
-    desc: 'Next.js app using Gemini API to extract job requirements and generate interview questions.',
-    tech: ['Next.js', 'Gemini API'],
+    desc: 'An AI-driven platform that scrapes job descriptions and generates tailored interview questions using Gemini API to help candidates prepare effectively.',
+    tech: ['Next.js', 'Gemini API', 'Python'],
     github: 'https://github.com/Ananya0424/prep-pilot-ai',
     live: 'https://prep-pilot-ai-kappa.vercel.app/',
     color: 'from-blue-500 to-purple-500'
   },
   {
-    title: 'EdTech Portal',
-    role: 'Education Platform',
-    desc: 'React.js platform with LLM key config panel. Integrated with Unity through APIs.',
-    tech: ['React', 'Unity API'],
-    github: 'https://github.com/Ananya0424/Metaverse-TFG-Educational-',
-    live: 'https://tfg.future4next.com/',
-    color: 'from-purple-500 to-pink-500'
-  },
-  {
-    title: 'Finance Tracker',
-    role: 'AI Finance App',
-    desc: 'Full-stack app with a Flask analytics service to generate spending insights from user data.',
-    tech: ['Flask', 'MongoDB'],
-    github: 'https://github.com/Ananya0424/financeee',
-    live: 'https://financeee-flax.vercel.app/',
-    color: 'from-emerald-500 to-teal-500'
-  },
-  {
     title: 'Medical Chatbot',
     role: 'Healthcare AI',
-    desc: 'Offline chatbot with LangChain, FAISS, and Ollama. Processes chunks with MiniLM.',
-    tech: ['LangChain', 'Ollama'],
+    desc: 'An offline, privacy-focused healthcare assistant built with LangChain and FAISS. Uses Ollama (Phi-3) to answer medical queries from local documents.',
+    tech: ['LangChain', 'Ollama', 'FAISS'],
     github: 'https://github.com/Ananya0424/AI-Medical-chatboT',
     live: '',
     color: 'from-rose-500 to-orange-500'
@@ -41,19 +23,37 @@ const projects = [
   {
     title: 'Advanced AI (RAG)',
     role: 'Multimodal Chatbot',
-    desc: 'Chatbot utilizing RAG to handle complex text and chat histories efficiently.',
-    tech: ['RAG', 'LLM APIs'],
+    desc: 'A powerful conversational AI utilizing Retrieval-Augmented Generation (RAG). Processes complex documents and maintains chat history for accurate responses.',
+    tech: ['RAG', 'LLM APIs', 'Python'],
     github: 'https://github.com/Ananya0424/AI-Medical-chatboT', 
     live: 'https://ai-advanced-chatbot-1.onrender.com/',
     color: 'from-cyan-500 to-blue-500'
   },
   {
-    title: 'Doc Scanner',
-    role: 'Scanner Utility',
-    desc: 'Interactive application for scanning and processing documents directly from browser.',
-    tech: ['React', 'Web APIs'],
-    github: 'https://github.com/Ananya0424/doc-scanner',
-    live: 'https://doc-scanner-alpha-bice.vercel.app',
+    title: 'EdTech Portal',
+    role: 'Education Platform',
+    desc: 'A React-based platform featuring a secure API config panel. Seamlessly integrates with Unity WebGL to deliver real-time interactive 3D gaming experiences.',
+    tech: ['React', 'Unity API', 'Node.js'],
+    github: 'https://github.com/Ananya0424/Metaverse-TFG-Educational-',
+    live: 'https://tfg.future4next.com/',
+    color: 'from-purple-500 to-pink-500'
+  },
+  {
+    title: 'Finance Tracker',
+    role: 'AI Finance App',
+    desc: 'A comprehensive personal finance app using React and Flask. Leverages a Pandas-based analytics engine to generate smart spending insights from user data.',
+    tech: ['Flask', 'MongoDB', 'React'],
+    github: 'https://github.com/Ananya0424/financeee',
+    live: 'https://financeee-flax.vercel.app/',
+    color: 'from-emerald-500 to-teal-500'
+  },
+  {
+    title: 'Virtual Photobooth',
+    role: 'Interactive Web App',
+    desc: 'A fun, interactive application that utilizes the browser camera API to capture photos, apply custom filters, and allow instant image downloads.',
+    tech: ['React', 'Webcam API', 'Canvas'],
+    github: 'https://github.com/Ananya0424',
+    live: '',
     color: 'from-indigo-500 to-purple-500'
   }
 ];
