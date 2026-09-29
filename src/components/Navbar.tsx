@@ -5,7 +5,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'about', 'projects', 'contact'];
       const scrollPosition = window.scrollY + 200; // Offset for navbar
 
       for (const section of sections) {
@@ -26,8 +26,7 @@ export default function Navbar() {
 
   const navItems = [
     { name: 'Home', id: 'home', href: '#home' },
-    { name: 'About', id: 'about', href: '#about' },
-    { name: 'Skills', id: 'skills', href: '#skills' },
+    { name: 'About & Skills', id: 'about', href: '#about' },
     { name: 'Projects', id: 'projects', href: '#projects' },
     { name: 'Contact', id: 'contact', href: '#contact' },
   ];

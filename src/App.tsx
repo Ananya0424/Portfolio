@@ -3,7 +3,6 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Info from './components/Info';
-import Skills from './components/Skills';
 import Contact from './components/Contact';
 import CustomCursor from './components/CustomCursor';
 import { motion, useScroll } from 'framer-motion';
@@ -27,7 +26,6 @@ function App() {
       <main className="flex-1 w-full z-10 relative">
         <Hero />
         <Info />
-        <Skills />
         <Projects />
         <Contact />
       </main>
