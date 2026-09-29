@@ -69,7 +69,7 @@ export default function Projects() {
         className="text-center mb-8"
       >
         <h2 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight">
-          Selected Works
+          Projects
         </h2>
       </motion.div>
 
@@ -82,17 +82,12 @@ export default function Projects() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, delay: index * 0.05 }}
-            className="group flex flex-col bg-[#0f0f11] rounded-2xl border border-white/10 overflow-hidden hover:border-purple-500/50 transition-all shadow-lg"
+            className="group flex flex-col bg-[#0f0f11] rounded-2xl border border-white/10 overflow-hidden hover:border-purple-500/50 transition-all shadow-lg relative"
           >
-            {/* Very Compact Thumbnail */}
-            <div className="w-full h-24 relative overflow-hidden bg-[#050505] border-b border-white/5 flex items-center justify-center">
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-20 group-hover:opacity-40 transition-opacity duration-300`} />
-              <span className="font-display text-3xl font-bold text-white/30 uppercase tracking-widest relative z-10 group-hover:scale-110 transition-transform duration-500">
-                {project.title.substring(0, 2)}
-              </span>
-            </div>
+            {/* Subtle Top Border Gradient instead of the big box */}
+            <div className={`w-full h-2 bg-gradient-to-r ${project.color} opacity-70`} />
             
-            <div className="p-4 md:p-5 flex flex-col h-full">
+            <div className="p-5 md:p-6 flex flex-col h-full">
               <h3 className="text-lg font-bold text-white mb-1 line-clamp-1">
                 {project.title}
               </h3>
