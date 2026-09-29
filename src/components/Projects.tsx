@@ -39,7 +39,7 @@ const projects = [
     color: 'from-rose-500 to-orange-500'
   },
   {
-    title: 'Virtual Photobooth',
+    title: 'AI Photo Booth',
     role: 'Interactive Web App',
     desc: 'A fun, interactive application that utilizes the browser camera API to capture photos, apply custom filters, and allow instant image downloads.',
     tech: ['React', 'Webcam API', 'Canvas'],
