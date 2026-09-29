@@ -11,10 +11,11 @@ export default function Contact() {
           <h2 className="text-4xl md:text-6xl font-bold mb-6 uppercase tracking-wide">
             Let's Work Together
           </h2>
-          <p className="text-base md:text-lg font-medium text-white/80 mb-8 leading-relaxed">
-            I'm currently seeking entry-level opportunities and would love to hear from you. 
-            Whether you have a question, want to collaborate on a project, or just want to say hi, I'll try my best to get back to you!
-          </p>
+          <div className="text-base md:text-lg font-medium text-white/80 mb-8 leading-relaxed flex flex-wrap gap-x-1.5">
+            {"I'm currently seeking entry-level opportunities and would love to hear from you. Whether you have a question, want to collaborate on a project, or just want to say hi, I'll try my best to get back to you!".split(' ').map((word, i) => (
+              <span key={`contact-${i}`} className="inline-block transition-all duration-300 hover:scale-125 hover:text-white hover:drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] hover:-translate-y-1 cursor-default">{word}</span>
+            ))}
+          </div>
         </div>
 
         {/* Right Side: Contact Cards */}
