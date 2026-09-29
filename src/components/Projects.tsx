@@ -86,7 +86,7 @@ export default function Projects() {
               </div>
               
               <div className="flex items-center gap-4 pt-4 border-t border-gray-100">
-                {project.live ? (
+                {project.live && (
                   <a 
                     href={project.live} 
                     target="_blank" 
@@ -95,13 +95,9 @@ export default function Projects() {
                   >
                     Live Demo
                   </a>
-                ) : (
-                  <button disabled className="flex-1 flex items-center justify-center gap-2 text-sm font-bold bg-gray-200 text-gray-400 py-2 px-4 rounded-xl cursor-not-allowed">
-                    No Live Link
-                  </button>
                 )}
                 
-                {project.github ? (
+                {project.github && (
                   <a 
                     href={project.github} 
                     target="_blank" 
@@ -110,10 +106,6 @@ export default function Projects() {
                   >
                     GitHub
                   </a>
-                ) : (
-                  <button disabled className="flex-1 flex items-center justify-center gap-2 text-sm font-bold bg-gray-200 text-gray-400 py-2 px-4 rounded-xl cursor-not-allowed">
-                    No GitHub
-                  </button>
                 )}
               </div>
             </div>
