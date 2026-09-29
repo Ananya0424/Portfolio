@@ -36,7 +36,7 @@ export default function Hero() {
           HELLO, <span className="text-2xl md:text-4xl">👋</span> THERE
         </h2>
         
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 h-24 md:h-32 text-white">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 min-h-[130px] md:min-h-[200px] lg:min-h-[240px] text-white leading-tight">
           I'M {text}<span className="animate-pulse text-purple-500">|</span>
         </h1>
         
