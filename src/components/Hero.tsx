@@ -6,7 +6,7 @@ export default function Hero() {
   const [isTyping, setIsTyping] = useState(true);
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>;
     
     if (isTyping) {
       if (text.length < fullText.length) {
