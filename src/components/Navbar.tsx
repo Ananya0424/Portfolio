@@ -32,7 +32,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full h-20 bg-[#1a1a1a]/90 backdrop-blur-md flex justify-between items-center px-8 md:px-20 z-50 shadow-md transition-all">
+    <nav className="fixed top-0 left-0 w-full h-20 bg-[#1a1a1a]/90 backdrop-blur-md flex justify-between items-center px-4 md:px-10 z-50 shadow-md transition-all">
       {/* Logo */}
       <div className="px-4 py-2 bg-purple-600 rounded flex items-center justify-center font-bold text-white text-lg tracking-widest">
         ANANYA

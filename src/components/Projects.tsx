@@ -12,24 +12,6 @@ const projects = [
     color: 'from-blue-500 to-purple-500'
   },
   {
-    title: 'Medical Chatbot',
-    role: 'Healthcare AI',
-    desc: 'An offline, privacy-focused healthcare assistant built with LangChain and FAISS. Uses Ollama (Phi-3) to answer medical queries from local documents.',
-    tech: ['LangChain', 'Ollama', 'FAISS'],
-    github: 'https://github.com/Ananya0424/AI-Medical-chatboT',
-    live: '',
-    color: 'from-rose-500 to-orange-500'
-  },
-  {
-    title: 'Advanced AI (RAG)',
-    role: 'Multimodal Chatbot',
-    desc: 'A powerful conversational AI utilizing Retrieval-Augmented Generation (RAG). Processes complex documents and maintains chat history for accurate responses.',
-    tech: ['RAG', 'LLM APIs', 'Python'],
-    github: 'https://github.com/Ananya0424/AI-Medical-chatboT', 
-    live: 'https://ai-advanced-chatbot-1.onrender.com/',
-    color: 'from-cyan-500 to-blue-500'
-  },
-  {
     title: 'EdTech Portal',
     role: 'Education Platform',
     desc: 'A React-based platform featuring a secure API config panel. Seamlessly integrates with Unity WebGL to deliver real-time interactive 3D gaming experiences.',
@@ -48,12 +30,30 @@ const projects = [
     color: 'from-emerald-500 to-teal-500'
   },
   {
+    title: 'AI Chatbots',
+    role: 'Medical & Multimodal RAG',
+    desc: 'Two advanced AI bots combined: an offline Medical Assistant (Ollama, FAISS) and a complex RAG-based Multimodal bot that maintains chat histories.',
+    tech: ['LangChain', 'Ollama', 'RAG'],
+    github: 'https://github.com/Ananya0424/AI-Medical-chatboT', 
+    live: 'https://ai-advanced-chatbot-1.onrender.com/',
+    color: 'from-rose-500 to-orange-500'
+  },
+  {
     title: 'Virtual Photobooth',
     role: 'Interactive Web App',
     desc: 'A fun, interactive application that utilizes the browser camera API to capture photos, apply custom filters, and allow instant image downloads.',
     tech: ['React', 'Webcam API', 'Canvas'],
-    github: 'https://github.com/Ananya0424',
-    live: '',
+    github: 'https://github.com/Ananya0424/photobooth',
+    live: 'https://photobooth-delta.vercel.app', // Added temporary live link
+    color: 'from-cyan-500 to-blue-500'
+  },
+  {
+    title: 'Doc Scanner',
+    role: 'Scanner Utility',
+    desc: 'An interactive application designed for scanning, analyzing, and processing documents directly and efficiently from the browser.',
+    tech: ['React', 'Web APIs'],
+    github: 'https://github.com/Ananya0424/doc-scanner',
+    live: 'https://doc-scanner-alpha-bice.vercel.app',
     color: 'from-indigo-500 to-purple-500'
   }
 ];
@@ -90,9 +90,9 @@ export default function Projects() {
               
               {/* Front of Card */}
               <div className="absolute inset-0 w-full h-full bg-[#0f0f11] rounded-2xl border border-white/10 [backface-visibility:hidden] flex flex-col items-center justify-center p-6 text-center overflow-hidden">
-                <div className={`absolute top-0 w-full h-1.5 bg-gradient-to-r ${project.color} opacity-80`} />
-                <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-sm font-bold tracking-widest uppercase text-purple-400">{project.role}</p>
+                <div className={`absolute top-0 w-full h-2 bg-gradient-to-r ${project.color} opacity-90`} />
+                <h3 className="text-3xl font-bold text-white mb-2">{project.title}</h3>
+                <p className="text-xs font-bold tracking-widest uppercase text-purple-400">{project.role}</p>
               </div>
 
               {/* Back of Card (Flipped) */}
