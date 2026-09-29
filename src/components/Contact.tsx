@@ -9,12 +9,12 @@ export default function Contact() {
           Let's Work Together
         </h2>
         
-        <p className="text-lg md:text-xl font-medium text-white/90 mb-8 max-w-2xl leading-relaxed">
+        <p className="text-sm md:text-base font-medium text-white/90 mb-8 max-w-2xl leading-relaxed">
           I'm currently seeking entry-level opportunities and would love to hear from you. 
           Whether you have a question or just want to say hi, I'll try my best to get back to you!
         </p>
 
-        <div className="flex flex-col gap-4 text-base md:text-lg font-medium">
+        <div className="flex flex-col gap-4 text-sm md:text-base font-medium">
           <a href="mailto:ananyasharma242004@gmail.com" className="flex items-center gap-4 hover:opacity-80 transition-opacity">
             <div className="w-10 h-10 md:w-12 md:h-12 bg-white rounded-full flex items-center justify-center text-[#FDBB2D] shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
