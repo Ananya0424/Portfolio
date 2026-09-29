@@ -30,22 +30,24 @@ export default function CustomCursor() {
 
   return (
     <>
+      {/* Spotlight Flashlight Effect */}
+      <div
+        className="pointer-events-none fixed inset-0 z-50 hidden md:block transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(168, 85, 247, 0.15), transparent 40%)`
+        }}
+      />
+      
+      {/* Core Custom Cursor */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 border-purple-500 pointer-events-none z-[999] mix-blend-difference hidden md:block"
+        className="fixed top-0 left-0 w-6 h-6 rounded-full border-2 border-purple-400 pointer-events-none z-[999] mix-blend-screen hidden md:block shadow-[0_0_10px_rgba(168,85,247,0.8)]"
         animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isHovering ? 2 : 1,
+          x: mousePosition.x - 12,
+          y: mousePosition.y - 12,
+          scale: isHovering ? 2.5 : 1,
           backgroundColor: isHovering ? 'rgba(168, 85, 247, 0.2)' : 'transparent',
         }}
         transition={{ type: "spring", stiffness: 500, damping: 28, mass: 0.5 }}
-      />
-      <div 
-        className="fixed top-0 left-0 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none z-[1] hidden md:block"
-        style={{
-          transform: `translate(${mousePosition.x - 192}px, ${mousePosition.y - 192}px)`,
-          transition: 'transform 0.1s ease-out'
-        }}
       />
     </>
   );
